@@ -74,6 +74,7 @@ export default function Navbar() {
             <li><Link to="/SobreNos" className="text-blue-900 hover:text-purple-700">Sobre Nós</Link></li>
             <li><Link to="/Comunidade" className="text-blue-900 hover:text-purple-700">Comunidade</Link></li>
             <li><Link to="/Contato" className="text-blue-900 hover:text-purple-700">Contato</Link></li>
+            <li><Link to="/TesteAutismo" className="text-blue-900 hover:text-purple-700">Quiz</Link></li>
 
             {/* Mobile: saudação ou botão Entrar */}
             {userName ? (
