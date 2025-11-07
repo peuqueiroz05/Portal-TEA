@@ -7,6 +7,8 @@ import Login from './Componentes/Login';
 import Cadastro from './Componentes/Cadastro';
 import Register from './Componentes/Register';
 import Sobre from './Componentes/Sobre';
+import Saude from './Componentes/Saude';
+import HistoriaAutismo from './Componentes/HistoriaAutismo';
 import Contato from './Componentes/Contato';
 import ContatoProfissional from './Componentes/ContatoProfissional';
 import SobreNos from './Componentes/SobreNos';
@@ -29,7 +31,7 @@ function App() {
         }}
       >
         <Navbar />
-        <div style={{ flex: 1 }}>
+        <div className="pt-[70px]">
           {/* Conteúdo das rotas */}
           <Routes>
             <Route path="/" element={<Carrosel />} />
@@ -38,6 +40,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/saude" element={<Saude />} />
+            <Route path="/HistoriaAutismo" element={<HistoriaAutismo />} />
             <Route path="/ContatoProfissional" element={<ContatoProfissional />} />
             <Route path="/SobreNos" element={<SobreNos />} />
             <Route path="/Comunidade" element={<Comunidade />} />

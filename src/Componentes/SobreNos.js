@@ -1,39 +1,62 @@
-import React from 'react';
+import React from "react";
+import { FaHandsHelping, FaHeart, FaUsers } from "react-icons/fa";
 
-const SobreNos = () => {
+export default function SobreNos() {
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-      padding: '40px',
-      
-      textAlign: 'center',
-      color: '#333',
-      borderRadius: '10px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    }}>
-      <div style={{
-        maxWidth: '800px',
-        background: 'rgba(255, 255, 255, 0.9)',
-        padding: '20px',
-        borderRadius: '10px',
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-      }}>
-        <h2 style={{ marginBottom: '20px' }}>Sobre Nós</h2>
-        <p style={{ marginBottom: '20px' }}>
-          Bem-vindo ao <strong>PORTAL TEA</strong>! Somos um grupo dedicado a incentivar o apoio social e oferecer ajuda para cuidadores e pais de pessoas autistas. Entendemos que o cuidado de uma pessoa no espectro autista pode ser desafiador, e é por isso que buscamos criar um espaço seguro e acolhedor para que todos possam compartilhar suas experiências, buscar conselhos e expressar suas dificuldades sem julgamentos.
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 px-6 py-12 flex flex-col items-center">
+      <h1 className="text-4xl font-bold text-blue-700 mb-4 text-center">
+        Sobre Nós
+      </h1>
+
+      <p className="max-w-3xl text-center text-gray-700 text-lg mb-10 leading-relaxed">
+        O <strong>Portal TEA</strong> nasceu com o propósito de criar um espaço seguro,
+        acolhedor e informativo para pessoas Autistas, familiares, educadores e
+        profissionais da área da saúde. Aqui, acreditamos que cada pessoa é única
+        e merece ser compreendida de verdade.
+      </p>
+
+      <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
+        {/* Card 1 */}
+        <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition">
+          <FaHeart className="text-red-500 text-5xl mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-blue-700 mb-2">Empatia</h2>
+          <p className="text-gray-600">
+            Acreditamos em relações humanas baseadas no respeito e na compreensão.
+            Cada história importa e merece ser ouvida.
+          </p>
+        </div>
+
+        {/* Card 2 */}
+        <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition">
+          <FaUsers className="text-purple-600 text-5xl mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-blue-700 mb-2">Comunidade</h2>
+          <p className="text-gray-600">
+            Somos uma rede de apoio e troca de experiências. Ninguém precisa
+            caminhar sozinho.
+          </p>
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition">
+          <FaHandsHelping className="text-green-600 text-5xl mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-blue-700 mb-2">Acolhimento</h2>
+          <p className="text-gray-600">
+            Criamos um ambiente acolhedor onde pessoas autistas podem se expressar
+            livremente, sem julgamentos.
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-3xl text-center mt-12 text-gray-700 text-lg leading-relaxed">
+        <p className="mb-6">
+          Nosso compromisso é com a verdade, com o respeito e com a luta por mais
+          acessibilidade, inclusão e representatividade. 💙
         </p>
-        <p style={{ marginBottom: '20px' }}>
-          No <strong>PORTAL TEA</strong>, acreditamos que a comunidade é fundamental para enfrentar os desafios diários, e nossa missão é conectar pais e cuidadores que vivem essa realidade, promovendo a troca de experiências e a solidariedade. Queremos que todos aqui se sintam apoiados e compreendidos, para que juntos possamos construir um ambiente de respeito, aprendizado mútuo e apoio contínuo.
-        </p>
-        <p>
-          Nossa plataforma foi criada para oferecer recursos, informações e, acima de tudo, uma comunidade onde você pode ser ouvido. Este é um espaço onde os desafios e as conquistas de cuidar de uma pessoa autista podem ser discutidos livremente, ajudando a reduzir o estigma e a garantir que ninguém se sinta sozinho nesta jornada.
+
+        <p className="font-semibold text-blue-700">
+          Você é bem-vindo aqui. Você pertence aqui.
         </p>
       </div>
     </div>
   );
-};
-
-export default SobreNos;
+}

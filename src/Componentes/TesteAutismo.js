@@ -4,41 +4,108 @@ const quizQuestions = [
   {
     question: "O que é o Transtorno do Espectro Autista (TEA)?",
     options: [
+      "Uma condição de desenvolvimento que afeta comunicação e comportamento",
       "Uma doença contagiosa",
-      "Uma condição de desenvolvimento que afeta a comunicação e comportamento",
       "Uma deficiência física",
-      "Um tipo de distúrbio mental",
+      "Um transtorno temporário",
     ],
-    answer: 1,
+    answer: 0,
   },
   {
     question: "Quais são os níveis de suporte no autismo?",
     options: [
-      "Nível 1, Nível 2, Nível 3",
-      "Leve, Moderado, Severos",
-      "Baixo, Médio, Alto",
-      "Nenhum",
+      "Nível 1, Nível 2 e Nível 3",
+      "Leve, Moderado e Severo",
+      "Baixo, Médio e Alto",
+      "Não existem níveis",
     ],
     answer: 0,
   },
   {
-    question: "O autismo é mais comum em homens do que em mulheres?",
-    options: ["Sim", "Não", "Ambos têm a mesma probabilidade", "Não se sabe"],
+    question: "O autismo é mais comum em:",
+    options: [
+      "Homens",
+      "Mulheres",
+      "Afeta igualmente",
+      "Não se sabe",
+    ],
     answer: 0,
   },
   {
-    question: "Quais são algumas características do autismo?",
+    question: "Qual dessas características pode aparecer no autismo?",
     options: [
-      "Dificuldades de comunicação e interação social",
-      "Hiperatividade",
-      "Preferência por atividades físicas",
-      "Dificuldade em reconhecer emoções",
+      "Interesses intensos por assuntos específicos",
+      "Fortes preferências por rotinas",
+      "Dificuldades sociais",
+      "Todas as alternativas acima",
+    ],
+    answer: 3,
+  },
+  {
+    question: "O autismo tem cura?",
+    options: [
+      "Sim",
+      "Não, mas existem terapias que auxiliam no desenvolvimento",
+      "Depende do caso",
+      "Somente em crianças",
+    ],
+    answer: 1,
+  },
+  {
+    question: "Qual profissional pode fazer o diagnóstico de TEA?",
+    options: [
+      "Apenas psicólogo",
+      "Apenas neurologista",
+      "Apenas psiquiatra",
+      "Psiquiatra, Neurologista ou Pediatra especializado",
+    ],
+    answer: 3,
+  },
+  {
+    question: "Qual é a principal abordagem terapêutica recomendada?",
+    options: [
+      "ABA – Análise do Comportamento Aplicada",
+      "Terapia baseada apenas em remédios",
+      "Hipnose",
+      "Nenhuma terapia é recomendada",
+    ],
+    answer: 0,
+  },
+  {
+    question: "O autismo acompanha a pessoa por toda a vida?",
+    options: [
+      "Sim",
+      "Não",
+      "Depende do tratamento",
+      "Somente até a adolescência",
+    ],
+    answer: 0,
+  },
+  {
+    question: "Pessoas autistas podem ter excelente desempenho em áreas específicas?",
+    options: [
+      "Sim",
+      "Não",
+      "Nunca",
+      "Apenas se treinadas",
+    ],
+    answer: 0,
+  },
+  {
+    question: "O TEA é considerado:",
+    options: [
+      "Um transtorno do neurodesenvolvimento",
+      "Um transtorno psicológico leve",
+      "Resultado de criação dos pais",
+      "Um comportamento inadequado",
     ],
     answer: 0,
   },
 ];
 
+
 const TesteAutismo = () => {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
