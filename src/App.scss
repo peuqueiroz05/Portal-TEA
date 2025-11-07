@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante altura mínima da página */
+}
+
+/* Estilo do cabeçalho */
+.App-header {
+  background-color: #4f82e7;
+  flex: 1; /* Faz o cabeçalho ocupar o espaço necessário */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 20px; /* Adiciona espaçamento interno */
+}
+
+/* Estilo do footer */
+footer {
+  background-color: #120a58;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-family: 'DynaPuff', sans-serif;
+  flex-shrink: 0; /* Garante que o footer não encolha */
+  width: 100%; /* Ocupa toda a largura da página */
+}
+
+/* Estilo para links dentro do footer */
+footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #61dafb; /* Cor de hover para os links */
+  }
+}
+
+/* Estilo para o logo */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+}
+
+/* Estilo para links */
+.App-link {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ffffff; /* Troca para branco ao passar o mouse */
+  }
+}
+
+/* Animação do logo */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: calc(8px + 2vmin); /* Reduz tamanho da fonte */
+    padding: 20px;
+  }
+
+  .App-logo {
+    height: 30vmin; /* Reduz o tamanho do logo */
+  }
+
+  .App-link {
+    font-size: 14px; /* Ajusta tamanho dos links */
+  }
+
+  footer {
+    font-size: 14px; /* Ajusta tamanho do texto no footer */
+  }
+}
