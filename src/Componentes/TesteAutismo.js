@@ -105,7 +105,7 @@ const quizQuestions = [
 
 
 const TesteAutismo = () => {
-  const [questions, setQuestions] = useState([]);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
