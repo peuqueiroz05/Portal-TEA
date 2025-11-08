@@ -44,7 +44,7 @@ export default function Navbar() {
             <Link to="/" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Início</Link>
           </li>
           <li>
-            <Link to="/HistoriaAutismo" onClick={() => setMenuOpen(false)}>História</Link>
+            <Link to="/HistoriaAutismo" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>História</Link>
           </li>
           <li>
             <Link to="/SobreNos" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Sobre Nós</Link>
