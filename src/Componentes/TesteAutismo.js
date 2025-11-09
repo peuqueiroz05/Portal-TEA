@@ -12,12 +12,12 @@ const quizQuestions = [
     answer: 0,
   },
   {
-    question: "Quais são os níveis de suporte no autismo?",
+    question: "Qual das seguintes atitudes pode ajudar a apoiar uma pessoa com Transtorno do Espectro Autista?",
     options: [
-      "Nível 1, Nível 2 e Nível 3",
-      "Leve, Moderado e Severo",
-      "Baixo, Médio e Alto",
-      "Não existem níveis",
+      "Respeitar seu ritmo, oferecer previsibilidade e comunicação clara.",
+      "Ignorar suas dificuldades para que ela “se acostume” com situações sociais.",
+      "Forçar mudanças rápidas em sua rotina sem aviso prévio.",
+      "Evitar qualquer interação para não causar desconforto",
     ],
     answer: 0,
   },
