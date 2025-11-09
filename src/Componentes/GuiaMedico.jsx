@@ -3,31 +3,31 @@ import { FaHospital, FaUserMd, FaHandsHelping, FaNotesMedical } from "react-icon
 
 const saudeInfo = [
   {
-    titulo: "Guia sobre diagnóstico e tratamento",
+    titulo: "Diagnóstico e tratamento",
     descricao:
       "É importante a conscientização do paciente e dos familiares, sobre seus tratamentos e direitos, os objetivos deste guia é dispor informações que auxiliem mães, pais e responsáveis sobre o TEA",
     fonte: "https://www.mpgo.mp.br/portal/arquivos/2024/02/08/14_33_22_339_Guia_Pr_tico_Autismo_vers_o_2.pdf",
     icon: <FaNotesMedical className="text-blue-500 w-8 h-8" />,
   },
   {
-    titulo: "Ambientes Calmantes",
+    titulo: "Experiência mais humanizada",
     descricao:
       "Consultórios podem adaptar o ambiente com iluminação suave, reduzir ruídos e limitar estímulos visuais para tornar a experiência mais confortável.",
-    fonte: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6117154/",
+    fonte: "https://portal.afya.com.br/carreira/atendimento-medico-a-pacientes-autistas-como-tornar-a-experiencia-mais-humanizada",
     icon: <FaHospital className="text-green-500 w-8 h-8" />,
   },
   {
-    titulo: "Comunicação Adaptada",
+    titulo: "Estratégias de acompanhamento",
     descricao:
-      "Usar linguagem clara, pausada e suportes visuais ajuda na compreensão. Permitir tempo extra para perguntas e respostas também é recomendado.",
+      "Descubra estratégias eficazes de acompanhamento para pessoas autistas, técnicas como ABA, comunicação aumentativa e intervenções precoces fazem diferença, Avaliações periódicas ajudam a monitorar e ajustar o progresso. O Abraço conecta terapeutas, famílias e registros em um só lugar, cada pessoa no espectro é única, e o acompanhamento certo transforma vidas.",
     fonte: "https://www.autism.org/communication-strategies",
     icon: <FaUserMd className="text-yellow-500 w-8 h-8" />,
   },
   {
-    titulo: "Procedimentos Médicos",
+    titulo: "Seus direitos",
     descricao:
-      "Para procedimentos invasivos, o uso de desensibilização gradual, reforços positivos e presença de cuidadores familiares pode reduzir estresse e ansiedade.",
-    fonte: "https://www.cdc.gov/ncbddd/autism/hcp.html",
+      "Conheça os direitos das pessoas com autismo e como garantir educação, saúde e apoio social, descubra leis importantes como a Lei Berenice Piana e a Carteira de Identificação do TEA, cada direito conta, saiba e proteja quem você ama",
+    fonte: "https://autismolegal.com.br/direitos-do-autista/",
     icon: <FaHandsHelping className="text-purple-500 w-8 h-8" />,
   },
 ];
@@ -36,7 +36,7 @@ const Saude = () => {
   return (
     <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">
-        Saúde e Atendimento Médico para Pessoas com TEA
+        Guia de saúde, atendimento médico e direitos para pessoas com TEA
       </h1>
       <p className="mb-10 text-gray-700 text-lg text-center">
         Recomendações baseadas em fontes confiáveis para tornar consultas e procedimentos médicos mais acessíveis e confortáveis para pessoas com Transtorno do Espectro Autista.

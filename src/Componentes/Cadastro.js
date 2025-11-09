@@ -1,117 +1,95 @@
+// src/Cadastro.js
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, db } from "../firebase/firebaseConfig";
+import { useNavigate } from "react-router-dom"; // Para redirecionamento
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from "../firebase/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
 
 const Cadastro = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [erro, setErro] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook do React Router
 
-  const handleRegister = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const auth = getAuth();
+
     try {
-      // 1️⃣ Cria o usuário no Firebase Auth
+      // Cria usuário no Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
       const user = userCredential.user;
 
-      // 2️⃣ Atualiza o perfil no Auth (para incluir o nome)
-      await updateProfile(user, { displayName: nome });
-
-      // 3️⃣ Cria um documento no Firestore com as informações do usuário
+      // Cria documento no Firestore com o UID do usuário
       await setDoc(doc(db, "usuarios", user.uid), {
         nome: nome,
         email: email,
-        criadoEm: new Date()
+        criadoEm: new Date(),
+        uid: user.uid
       });
 
-      // 4️⃣ Redireciona para a comunidade ou login
+      alert("Cadastro realizado com sucesso!");
+      
+      // Redireciona para a página da comunidade
       navigate("/comunidade");
 
+      // Limpa campos
+      setNome("");
+      setEmail("");
+      setSenha("");
     } catch (error) {
-      console.error("Erro ao registrar:", error.code, error.menssage);
-      setErro("Erro ao registrar. Tente novamente!");
+      console.error("Erro ao cadastrar:", error);
+      alert("Erro ao cadastrar. Veja o console.");
     }
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.box}>
-        <h2>Cadastre-se</h2>
-        <form onSubmit={handleRegister}>
-          <div className="form-group">
-            <label htmlFor="name">Nome</label>
-            <input
-              type="text"
-              id="name"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              id="password"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-              className="form-control"
-            />
-          </div>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 p-4">
+      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Cadastro de Usuário</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Campo Nome */}
+          <input
+            type="text"
+            placeholder="Nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
 
-          <button type="submit" className="btn btn-primary" style={styles.button}>
-            Registrar
+          {/* Campo Email */}
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+
+          {/* Campo Senha */}
+          <input
+            type="password"
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+
+          {/* Botão de cadastro */}
+          <button
+            type="submit"
+            className="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition"
+          >
+            Cadastrar
           </button>
-
-          {erro && <p style={{ color: "red", marginTop: "15px" }}>{erro}</p>}
         </form>
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-  },
-  box: {
-    background: "linear-gradient(135deg, #a6e6cf, #89CFF0)",
-    padding: "40px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    width: "100%",
-    maxWidth: "400px",
-    textAlign: "center",
-  },
-  button: {
-    marginTop: "20px",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    border: "none",
-    backgroundColor: "#007bff",
-    color: "#fff",
-    cursor: "pointer",
-  },
 };
 
 export default Cadastro;

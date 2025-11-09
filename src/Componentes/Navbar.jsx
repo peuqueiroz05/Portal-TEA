@@ -1,18 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { auth, db } from "../firebase/firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    const storedName = localStorage.getItem("userName");
-    if (storedName) setUserName(storedName);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        try {
+          const userDoc = await getDoc(doc(db, "usuarios", currentUser.uid));
+          if (userDoc.exists()) {
+            setUserName(userDoc.data().nome); // 🔹 Usa o nome do Firestore
+          } else {
+            setUserName(currentUser.email?.split("@")[0] || "Usuário");
+          }
+        } catch (error) {
+          console.error("Erro ao buscar nome do usuário:", error);
+          setUserName(currentUser.email?.split("@")[0] || "Usuário");
+        }
+      } else {
+        setUserName("");
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("userName");
+    auth.signOut(); // 🔹 Desloga do Firebase
     setUserName("");
     setMenuOpen(false);
   };
@@ -34,7 +54,7 @@ export default function Navbar() {
         </button>
       </header>
 
-      {/* Side-drawer (desktop e mobile) */}
+      {/* Side-drawer */}
       <div
         className={`fixed top-0 right-0 h-screen w-64 bg-blue-100 shadow-lg transform transition-transform duration-300 z-40
           ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
@@ -56,7 +76,7 @@ export default function Navbar() {
             <Link to="/TesteAutismo" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Quiz</Link>
           </li>
           <li>
-            <Link to="/Saude" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Saúde</Link>
+            <Link to="/GuiaMedico" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Guia de atendimentos</Link>
           </li>
 
           {userName ? (
