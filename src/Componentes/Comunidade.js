@@ -18,7 +18,7 @@ const Comunidade = () => {
   const [posts, setPosts] = useState([]);
   const [novoPost, setNovoPost] = useState("");
   const [imagem, setImagem] = useState(null);
-  const [comentarios, setComentarios] = useState({});
+  //const [comentarios, setComentarios] = useState({});
   const [novoComentario, setNovoComentario] = useState({});
   const [topicoSelecionado, setTopicoSelecionado] = useState("geral");
   const [topico, setTopico] = useState("geral");
