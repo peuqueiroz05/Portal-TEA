@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="bg-gradient-to-r from-blue-200 to-purple-200 shadow-md fixed w-full z-50 h-16 flex items-center px-6 justify-between">
+      <header className="bg-gradient-to-r from-blue-200 to-purple-200 shadow-md fixed top-0 left-0 w-full z-50 h-16 flex items-center justify-between px-4 sm:px-6 overflow-hidden">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-blue-800">
           Portal TEA
