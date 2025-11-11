@@ -1,4 +1,6 @@
 import React from "react";
+import { FiMail, FiMapPin } from "react-icons/fi";
+import { FaWhatsapp, FaPhone } from "react-icons/fa";
 
 const atendimentos = [
   {
@@ -6,15 +8,17 @@ const atendimentos = [
     resumo: "Atendimento psicológico voltado para ansiedade, depressão e desenvolvimento pessoal.",
     contato: "(81) 98765-4321",
     whatsapp: "81987654321",
+    email: "contato@clinicavidaplena.com.br",
     endereco: "Rua da Paz, 123 - Recife, PE",
     site: "https://www.instagram.com/clinicavidaplena_cvp/",
   },
   {
     nome: "Clínica Escola UNIBRA",
-    resumo: "Atendimento psicológico individual",
-    contato: "(81) 99876-5432",
-    whatsapp: "81998765432",
-    endereco: "Av. Boa Viagem, 456 - Recife, PE",
+    resumo: "Atendimento psicológico individual. Segunda a sexta, 8h-12h e 13h-20h",
+    contato: "(81) 98254-3044",
+    whatsapp: "81982543044",
+    email: "clinica.psicologia@grupounibra.com",
+    endereco: "Rua Padre Inglês - Boa vista, Recife",
     site: null,
   },
   {
@@ -22,8 +26,9 @@ const atendimentos = [
     resumo: "Clínica de psicologia com preços acessíveis, atendimento humanizado e workshops.",
     contato: "(81) 91234-5678",
     whatsapp: "81912345678",
+    email: null,
     endereco: "Rua Professor José Candido Pessoa, 1569, Bairro Novo, Olinda",
-    site: "hhttp://www.ceequilibrio.com.br/?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnnH9chOoK08Ysu3EQpzcWKW0F2F2nKEe2kNN6LrwAc_8xkqTpvnhorld_TLA_aem_ZmFrZWR1bW15MTZieXRlcw",
+    site: "http://www.ceequilibrio.com.br",
   },
 ];
 
@@ -38,39 +43,52 @@ const Atendimentos = () => {
         {atendimentos.map((atendimento, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300"
+            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           >
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            <h2 className="text-xl font-semibold text-gray-700 mb-3">
               {atendimento.nome}
             </h2>
             <p className="text-gray-600 mb-4">{atendimento.resumo}</p>
-            <p className="text-gray-500 mb-1">
-              <strong>Contato:</strong> {atendimento.contato}
+
+            <p className="flex items-center text-gray-500 mb-2">
+              <FaPhone className="mr-2 text-gray-600" />
+              {atendimento.contato}
             </p>
-            <p className="text-gray-500 mb-1">
-              <strong>WhatsApp:</strong>{" "}
+
+            <a
+              href={`https://wa.me/${atendimento.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center bg-green-500 text-white px-4 py-2 rounded-md mb-2 hover:bg-green-600 transition-colors"
+            >
+              <FaWhatsapp className="mr-2" />
+              WhatsApp
+            </a>
+
+            {atendimento.email && (
               <a
-                href={`https://wa.me/${atendimento.whatsapp}`}
+                href={`mailto:${atendimento.email}`}
+                className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md mb-2 hover:bg-blue-600 transition-colors"
+              >
+                <FiMail className="mr-2" />
+                Email
+              </a>
+            )}
+
+            <p className="flex items-center text-gray-500 mb-2">
+              <FiMapPin className="mr-2 text-gray-600" />
+              {atendimento.endereco}
+            </p>
+
+            {atendimento.site && (
+              <a
+                href={atendimento.site}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-600 hover:underline"
+                className="text-blue-600 hover:underline"
               >
-                {atendimento.whatsapp}
+                Visitar site
               </a>
-            </p>
-            <p className="text-gray-500 mb-2">
-              <strong>Endereço:</strong> {atendimento.endereco}
-            </p>
-            {atendimento.site && (
-              <p className="text-blue-600 hover:underline">
-                <a
-                  href={atendimento.site}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visitar site
-                </a>
-              </p>
             )}
           </div>
         ))}

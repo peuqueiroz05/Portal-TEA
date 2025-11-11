@@ -16,8 +16,6 @@ const imagesCarrossel2 = [PortalTEA4, PortalTEA5, PortalTEA6];
 const Carrosel = () => {
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
-  const [hover1, setHover1] = useState(false);
-  const [hover2, setHover2] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 800 });
@@ -38,17 +36,15 @@ const Carrosel = () => {
   }, []);
 
   return (
-    <div style={styles.container}>
+    <div className="max-w-6xl mx-auto py-10 px-4">
       
       {/* Seção 1 */}
-      <div style={styles.section} data-aos="fade-up">
-        <div
-          style={{ ...styles.carousel, ...(hover1 ? styles.carouselHover : {}) }}
-          onMouseEnter={() => setHover1(true)}
-          onMouseLeave={() => setHover1(false)}
-        >
+      <div className="flex flex-col md:flex-row items-center gap-8 mb-16" data-aos="fade-up">
+        
+        {/* Carrossel 1 */}
+        <div className="flex-1 shadow-lg rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
           <div id="carousel1" className="carousel slide" data-bs-ride="carousel">
-            
+
             <div className="carousel-indicators">
               {imagesCarrossel1.map((_, index) => (
                 <button
@@ -68,7 +64,11 @@ const Carrosel = () => {
                   className={`carousel-item ${index === currentIndex1 ? 'active' : ''}`}
                   key={index}
                 >
-                  <img src={image} alt={`Slide ${index + 1}`} style={styles.image} className="d-block w-100" />
+                  <img
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                    className="w-full h-64 md:h-96 object-cover"
+                  />
                 </div>
               ))}
             </div>
@@ -85,37 +85,29 @@ const Carrosel = () => {
           </div>
         </div>
 
-        <div
-          style={{ ...styles.textBox, ...(hover1 ? styles.textBoxHover : {}) }}
-          onMouseEnter={() => setHover1(true)}
-          onMouseLeave={() => setHover1(false)}
-        >
-          <h3 style={styles.title}>Sobre o PORTAL TEA</h3>
-          <p style={styles.text}>
-            O PORTAL TEA é uma plataforma dedicada a apoiar pais e cuidadores de pessoas com autismo. 
+        {/* Texto Seção 1 */}
+        <div className="flex-1 bg-white p-6 rounded-xl shadow-lg transform transition-transform duration-300 hover:-translate-y-2">
+          <h3 className="text-2xl font-bold mb-4 text-gray-800">Sobre o PORTAL TEA</h3>
+          <p className="text-gray-600 leading-relaxed">
+            O PORTAL TEA é uma plataforma dedicada a apoiar pais e cuidadores de pessoas com autismo.
             Oferece um espaço seguro para compartilhamento de experiências e acesso a recursos educativos.
           </p>
         </div>
       </div>
 
       {/* Seção 2 */}
-      <div style={styles.section} data-aos="fade-up">
-        <div
-          style={{ ...styles.textBox, ...(hover2 ? styles.textBoxHover : {}) }}
-          onMouseEnter={() => setHover2(true)}
-          onMouseLeave={() => setHover2(false)}
-        >
-          <h3 style={styles.title}>Recursos da Plataforma</h3>
-          <p style={styles.text}>
+      <div className="flex flex-col md:flex-row items-center gap-8 mb-16" data-aos="fade-up">
+        
+        {/* Texto Seção 2 */}
+        <div className="flex-1 bg-white p-6 rounded-xl shadow-lg transform transition-transform duration-300 hover:-translate-y-2">
+          <h3 className="text-2xl font-bold mb-4 text-gray-800">Recursos da Plataforma</h3>
+          <p className="text-gray-600 leading-relaxed">
             Explore ferramentas e informações sobre o autismo, participe de testes interativos e compartilhe suas experiências.
           </p>
         </div>
 
-        <div
-          style={{ ...styles.carousel, ...(hover2 ? styles.carouselHover : {}) }}
-          onMouseEnter={() => setHover2(true)}
-          onMouseLeave={() => setHover2(false)}
-        >
+        {/* Carrossel 2 */}
+        <div className="flex-1 shadow-lg rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
           <div id="carousel2" className="carousel slide" data-bs-ride="carousel">
 
             <div className="carousel-indicators">
@@ -137,7 +129,11 @@ const Carrosel = () => {
                   className={`carousel-item ${index === currentIndex2 ? 'active' : ''}`}
                   key={index}
                 >
-                  <img src={image} alt={`Slide ${index + 1}`} style={styles.image} className="d-block w-100" />
+                  <img
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                    className="w-full h-64 md:h-96 object-cover"
+                  />
                 </div>
               ))}
             </div>
@@ -153,72 +149,11 @@ const Carrosel = () => {
 
           </div>
         </div>
+
       </div>
 
     </div>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '40px 20px',
-    fontFamily: "'Roboto', sans-serif",
-    backgroundColor: '#f7f9fc',
-  },
-  section: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: '30px',
-    marginBottom: '60px',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  carousel: {
-    flex: 1,
-    maxWidth: '600px',
-    borderRadius: '15px',
-    overflow: 'hidden',
-    boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    backgroundColor: '#fff',
-  },
-  carouselHover: {
-    transform: 'translateY(-5px)',
-    boxShadow: '0 12px 25px rgba(0,0,0,0.15)',
-  },
-  textBox: {
-    flex: 1,
-    maxWidth: '550px',
-    backgroundColor: '#fff',
-    padding: '25px 30px',
-    borderRadius: '15px',
-    boxShadow: '0 8px 20px rgba(0,0,0,0.08)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  },
-  textBoxHover: {
-    transform: 'translateY(-5px)',
-    boxShadow: '0 12px 25px rgba(0,0,0,0.12)',
-  },
-  title: {
-    fontSize: '26px',
-    marginBottom: '20px',
-    color: '#2c3e50',
-    fontWeight: 700,
-  },
-  text: {
-    fontSize: '17px',
-    lineHeight: 1.8,
-    color: '#4f5d75',
-  },
-  image: {
-    width: '100%',
-    height: '350px',
-    objectFit: 'cover',
-    borderRadius: '15px',
-  },
 };
 
 export default Carrosel;
