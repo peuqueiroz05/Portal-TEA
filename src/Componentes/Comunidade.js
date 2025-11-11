@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { auth, db, storage } from "../firebase/firebaseConfig";
+import { auth, db } from "../firebase/firebaseConfig"; //tinha um storage antes, mas tirei
 import { onAuthStateChanged } from "firebase/auth";
 import {
   collection,
@@ -12,7 +12,7 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+ //import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const Comunidade = () => {
   const [posts, setPosts] = useState([]);
@@ -86,12 +86,38 @@ const Comunidade = () => {
     }
 
     try {
-      let imagemURL = "";
-      if (imagem) {
-        const imagemRef = ref(storage, `imagens/${imagem.name}-${Date.now()}`);
-        await uploadBytes(imagemRef, imagem);
-        imagemURL = await getDownloadURL(imagemRef);
+   let imagemURL = "";
+if (imagem) {
+  const formData = new FormData();
+  formData.append("file", imagem);
+  formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+
+  try {
+    const resposta = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
       }
+    );
+
+    const data = await resposta.json();
+
+    if (data.secure_url) {
+      imagemURL = data.secure_url;
+    } else {
+      console.error("Erro no retorno do Cloudinary:", data.error || data);
+      alert("❌ Erro ao enviar imagem. Verifique seu upload preset no Cloudinary.");
+      return;
+    }
+  } catch (error) {
+    console.error("Erro ao enviar imagem:", error);
+    alert("❌ Erro na comunicação com o Cloudinary.");
+    return;
+  }
+}
+
+
 
       const postData = {
         texto: novoPost.trim(),

@@ -18,6 +18,7 @@ import Privacidade from './Componentes/Privacidade';
 import DireitosAutorais from './Componentes/DireitosAutorais';
 import Suporte from './Componentes/Suporte';
 import FAQ from './Componentes/FAQ';
+import Atendimentos from './Componentes/Atendimentos';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/GuiaMedico" element={<GuiaMedico />} />
+            <Route path="/Atendimentos" element={<Atendimentos />} />
             <Route path="/HistoriaAutismo" element={<HistoriaAutismo />} />
             <Route path="/ContatoProfissional" element={<ContatoProfissional />} />
             <Route path="/SobreNos" element={<SobreNos />} />

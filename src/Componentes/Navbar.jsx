@@ -78,7 +78,9 @@ export default function Navbar() {
           <li>
             <Link to="/GuiaMedico" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Guia de atendimentos</Link>
           </li>
-
+          <li>
+            <Link to="/Atendimentos" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Atendimentos</Link>
+          </li>
           {userName ? (
             <li className="flex flex-col gap-2">
               <span className="text-blue-900 font-semibold">Olá, {userName}!</span>
