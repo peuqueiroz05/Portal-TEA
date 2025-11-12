@@ -23,12 +23,7 @@ const quizQuestions = [
   },
   {
     question: "O autismo é mais comum em:",
-    options: [
-      "Homens",
-      "Mulheres",
-      "Afeta igualmente",
-      "Não se sabe",
-    ],
+    options: ["Homens", "Mulheres", "Afeta igualmente", "Não se sabe"],
     answer: 0,
   },
   {
@@ -83,12 +78,7 @@ const quizQuestions = [
   },
   {
     question: "Pessoas autistas podem ter excelente desempenho em áreas específicas?",
-    options: [
-      "Sim",
-      "Não",
-      "Nunca",
-      "Apenas se treinadas",
-    ],
+    options: ["Sim", "Não", "Nunca", "Apenas se treinadas"],
     answer: 0,
   },
   {
@@ -103,17 +93,21 @@ const quizQuestions = [
   },
 ];
 
-
 const TesteAutismo = () => {
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
+  const [userAnswers, setUserAnswers] = useState([]); // guarda todas as respostas do usuário
 
+  // Quando a pessoa responde:
   const handleAnswer = (optionIndex) => {
+    const newAnswers = [...userAnswers, optionIndex];
+    setUserAnswers(newAnswers);
+
     if (optionIndex === quizQuestions[currentQuestionIndex].answer) {
       setScore(score + 1);
     }
+
     const nextIndex = currentQuestionIndex + 1;
     if (nextIndex < quizQuestions.length) {
       setCurrentQuestionIndex(nextIndex);
@@ -122,10 +116,12 @@ const TesteAutismo = () => {
     }
   };
 
+  // Reinicia o quiz
   const handleRestart = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
     setQuizFinished(false);
+    setUserAnswers([]);
   };
 
   return (
@@ -134,7 +130,7 @@ const TesteAutismo = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
-        minHeight: "80vh", // deixa espaço pro header e footer
+        minHeight: "80vh",
         padding: "50px 0",
         background: "linear-gradient(135deg, #d7e9ff 0%, #f1e4ff 100%)",
       }}
@@ -161,15 +157,44 @@ const TesteAutismo = () => {
           🧩 Teste de Conhecimento sobre o Autismo
         </h2>
 
+        {/* Se o quiz terminou */}
         {quizFinished ? (
           <div>
             <p style={{ fontSize: "18px", color: "#333", marginBottom: "20px" }}>
-              Você acertou <strong>{score}</strong> de{" "}
-              {quizQuestions.length} perguntas!
+              Você acertou <strong>{score}</strong> de {quizQuestions.length} perguntas!
             </p>
+
+            {/* Mostra as perguntas erradas */}
+            <div style={{ textAlign: "left", marginTop: "30px" }}>
+              <h3 style={{ color: "#5A5BA0", marginBottom: "10px" }}>Respostas incorretas:</h3>
+              {quizQuestions.map((q, index) => {
+                const userAnswer = userAnswers[index];
+                if (userAnswer !== q.answer) {
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        backgroundColor: "#ffe5e5",
+                        padding: "10px",
+                        borderRadius: "8px",
+                        marginBottom: "10px",
+                        border: "1px solid #ffcccc",
+                      }}
+                    >
+                      <p style={{ fontWeight: "bold" }}>{q.question}</p>
+                      <p style={{ color: "#d33" }}>❌ Sua resposta: {q.options[userAnswer]}</p>
+                      <p style={{ color: "green" }}>✅ Correta: {q.options[q.answer]}</p>
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </div>
+
             <button
               onClick={handleRestart}
               style={{
+                marginTop: "20px",
                 padding: "12px 20px",
                 backgroundColor: "#8EA7E9",
                 color: "white",
@@ -184,48 +209,37 @@ const TesteAutismo = () => {
           </div>
         ) : (
           <div>
-            <p
-              style={{
-                fontSize: "18px",
-                color: "#333",
-                marginBottom: "20px",
-              }}
-            >
+            <p style={{ fontSize: "18px", color: "#333", marginBottom: "20px" }}>
               <strong>Pergunta {currentQuestionIndex + 1}:</strong>{" "}
               {quizQuestions[currentQuestionIndex].question}
             </p>
 
+            {/* Botões das alternativas */}
             <div>
-              {quizQuestions[currentQuestionIndex].options.map(
-                (option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleAnswer(index)}
-                    style={{
-                      display: "block",
-                      margin: "10px auto",
-                      padding: "12px",
-                      backgroundColor: "#A5B4FC",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "8px",
-                      width: "100%",
-                      maxWidth: "350px",
-                      cursor: "pointer",
-                      fontSize: "15px",
-                      transition: "0.2s",
-                    }}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#7C91F2")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "#A5B4FC")
-                    }
-                  >
-                    {option}
-                  </button>
-                )
-              )}
+              {quizQuestions[currentQuestionIndex].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswer(index)}
+                  style={{
+                    display: "block",
+                    margin: "10px auto",
+                    padding: "12px",
+                    backgroundColor: "#A5B4FC",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "8px",
+                    width: "100%",
+                    maxWidth: "350px",
+                    cursor: "pointer",
+                    fontSize: "15px",
+                    transition: "0.2s",
+                  }}
+                  onMouseOver={(e) => (e.target.style.backgroundColor = "#7C91F2")}
+                  onMouseOut={(e) => (e.target.style.backgroundColor = "#A5B4FC")}
+                >
+                  {option}
+                </button>
+              ))}
             </div>
           </div>
         )}
