@@ -76,10 +76,13 @@ export default function Navbar() {
             <Link to="/TesteAutismo" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Quiz</Link>
           </li>
           <li>
-            <Link to="/GuiaMedico" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Guia de Saúde</Link>
+            <Link to="/GuiaSaude" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Guia de Saúde</Link>
           </li>
           <li>
             <Link to="/Atendimentos" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Atendimentos</Link>
+          </li>
+          <li>
+            <Link to="/Diagnostico" className="text-blue-900 hover:tet-purple-700" onClick={() => setMenuOpen(false)}>Diagnóstico</Link>
           </li>
           {userName ? (
             <li className="flex flex-col gap-2">
