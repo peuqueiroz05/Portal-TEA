@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Analytics } from "@vercel/analytics/react";
+import { HelmetProvider, Helmet } from "react-helmet-async";
+
 import Navbar from './Componentes/Navbar';
 import Carrosel from './Componentes/Carrosel';
 import Footer from './Componentes/Footer';
@@ -25,51 +27,65 @@ import Ads from './Componentes/Ads';
 
 function App() {
   return (
-    <Router>
-      <div
-        className="App"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-        }}
-      >
-        <Navbar />
-        <div className="pt-[70px]">
-          {/* Conteúdo das rotas */}
-          <Routes>
-            <Route path="/" element={
-              <>
-                {/* Parte qu ficará o ads, caso queira mudar a ordem só trocar a posição*/}
-                <Carrosel />
-                <Ads /> 
-                </>
-              } 
-              />
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/contato" element={<Contato />} />
-            <Route path="/GuiaSaude" element={<GuiaSaude />} />
-            <Route path="/Atendimentos" element={<Atendimentos />} />
-            <Route path="/HistoriaAutismo" element={<HistoriaAutismo />} />
-            <Route path="/ContatoProfissional" element={<ContatoProfissional />} />
-            <Route path="/SobreNos" element={<SobreNos />} />
-            <Route path="/Comunidade" element={<Comunidade />} />
-            <Route path="/TesteAutismo" element={<TesteAutismo />} />
-            <Route path="/Diagnostico" element={<Diagnostico />} />
-            <Route path="/Privacidade" element={<Privacidade />} />
-            <Route path="/DireitosAutorais" element={<DireitosAutorais />} />
-            <Route path="/Suporte" element={<Suporte />} />
-            <Route path="/FAQ" element={<FAQ />} />
-          </Routes>
-        </div>
-        <Footer />
+    <HelmetProvider>
+      <Router>
+        <div
+          className="App"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh',
+          }}
+        >
+          <Navbar />
+          <div className="pt-[70px]">
 
-        <Analytics />
-      </div>
-    </Router>
+            <Routes>
+              {/* HOME */}
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Helmet>
+                      <title>Portal TEA - Apoio a pais e cuidadores</title>
+                      <meta
+                        name="description"
+                        content="O Portal TEA oferece informações, apoio e comunidade para pais e cuidadores de pessoas autistas."
+                      />
+                    </Helmet>
+
+                    <Carrosel />
+                    <Ads />
+                  </>
+                }
+              />
+
+              <Route path="/login" element={<Login />} />
+              <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/contato" element={<Contato />} />
+              <Route path="/GuiaSaude" element={<GuiaSaude />} />
+              <Route path="/Atendimentos" element={<Atendimentos />} />
+              <Route path="/HistoriaAutismo" element={<HistoriaAutismo />} />
+              <Route path="/ContatoProfissional" element={<ContatoProfissional />} />
+              <Route path="/SobreNos" element={<SobreNos />} />
+              <Route path="/Comunidade" element={<Comunidade />} />
+              <Route path="/TesteAutismo" element={<TesteAutismo />} />
+              <Route path="/Diagnostico" element={<Diagnostico />} />
+              <Route path="/Privacidade" element={<Privacidade />} />
+              <Route path="/DireitosAutorais" element={<DireitosAutorais />} />
+              <Route path="/Suporte" element={<Suporte />} />
+              <Route path="/FAQ" element={<FAQ />} />
+            </Routes>
+
+          </div>
+
+          <Footer />
+          <Analytics />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 
