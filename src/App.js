@@ -21,6 +21,7 @@ import Suporte from './Componentes/Suporte';
 import FAQ from './Componentes/FAQ';
 import Atendimentos from './Componentes/Atendimentos';
 import Diagnostico from "./Componentes/Diagnostico";
+import Ads from './Componentes/Ads';
 
 function App() {
   return (
@@ -37,7 +38,14 @@ function App() {
         <div className="pt-[70px]">
           {/* Conteúdo das rotas */}
           <Routes>
-            <Route path="/" element={<Carrosel />} />
+            <Route path="/" element={
+              <>
+                {/* Parte qu ficará o ads, caso queira mudar a ordem só trocar a posição*/}
+                <Carrosel />
+                <Ads /> 
+                </>
+              } 
+              />
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/register" element={<Register />} />
@@ -50,7 +58,7 @@ function App() {
             <Route path="/SobreNos" element={<SobreNos />} />
             <Route path="/Comunidade" element={<Comunidade />} />
             <Route path="/TesteAutismo" element={<TesteAutismo />} />
-            <Route path="/diagnostico" element={<Diagnostico />} />
+            <Route path="/Diagnostico" element={<Diagnostico />} />
             <Route path="/Privacidade" element={<Privacidade />} />
             <Route path="/DireitosAutorais" element={<DireitosAutorais />} />
             <Route path="/Suporte" element={<Suporte />} />
