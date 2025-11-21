@@ -4,6 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { auth, db } from "../firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,13 +16,12 @@ export default function Navbar() {
         try {
           const userDoc = await getDoc(doc(db, "usuarios", currentUser.uid));
           if (userDoc.exists()) {
-            setUserName(userDoc.data().nome); // 🔹 Usa o nome do Firestore
+            setUserName(userDoc.data().nome);
           } else {
             setUserName(currentUser.email?.split("@")[0] || "Usuário");
           }
         } catch (error) {
           console.error("Erro ao buscar nome do usuário:", error);
-          setUserName(currentUser.email?.split("@")[0] || "Usuário");
         }
       } else {
         setUserName("");
@@ -32,20 +32,42 @@ export default function Navbar() {
   }, []);
 
   const handleLogout = () => {
-    auth.signOut(); // 🔹 Desloga do Firebase
+    auth.signOut();
     setUserName("");
     setMenuOpen(false);
+  };
+
+  // ⚡ Função para enviar evento ao Google Analytics
+  const trackClick = (label) => {
+    if (window.gtag) {
+      window.gtag("event", "menu_click", {
+        item: label,
+        category: "navigation",
+      });
+    }
+  };
+
+  // ⚡ Animação dos itens (Framer Motion)
+  const itemAnimation = {
+    hidden: { opacity: 0, x: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.07 },
+    }),
   };
 
   return (
     <>
       <header className="bg-gradient-to-r from-blue-200 to-purple-200 shadow-md fixed top-0 left-0 w-full z-50 h-16 flex items-center justify-between px-4 sm:px-6 overflow-hidden">
-        {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-blue-800">
+        <Link
+          to="/"
+          className="text-2xl font-bold text-blue-800"
+          onClick={() => trackClick("Logo")}
+        >
           Portal TEA
         </Link>
 
-        {/* Botão hamburger sempre visível */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="text-blue-900 focus:outline-none z-50"
@@ -54,66 +76,92 @@ export default function Navbar() {
         </button>
       </header>
 
-      {/* Side-drawer */}
-      <div
-        className={`fixed top-0 right-0 h-screen w-64 bg-blue-100 shadow-lg transform transition-transform duration-300 z-40
-          ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+      {/* SIDE DRAWER */}
+      <motion.div
+        initial={{ x: "100%" }}
+        animate={{ x: menuOpen ? 0 : "100%" }}
+        transition={{ duration: 0.3 }}
+        className="fixed top-0 right-0 h-screen w-64 bg-blue-100 shadow-lg z-40"
       >
         <ul className="flex flex-col mt-20 space-y-6 px-6">
-          <li>
-            <Link to="/" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Início</Link>
-          </li>
-          <li>
-            <Link to="/HistoriaAutismo" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>História</Link>
-          </li>
-          <li>
-            <Link to="/SobreNos" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Sobre Nós</Link>
-          </li>
-          <li>
-            <Link to="/Comunidade" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Comunidade</Link>
-          </li>
-          <li>
-            <Link to="/TesteAutismo" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Quiz</Link>
-          </li>
-          <li>
-            <Link to="/GuiaSaude" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Guia de Saúde</Link>
-          </li>
-          <li>
-            <Link to="/Atendimentos" className="text-blue-900 hover:text-purple-700" onClick={() => setMenuOpen(false)}>Atendimentos</Link>
-          </li>
-          <li>
-            <Link to="/Diagnostico" className="text-blue-900 hover:tet-purple-700" onClick={() => setMenuOpen(false)}>Diagnóstico</Link>
-          </li>
+          {[
+            { to: "/", label: "Início" },
+            { to: "/HistoriaAutismo", label: "História" },
+            { to: "/SobreNos", label: "Sobre Nós" },
+            { to: "/Comunidade", label: "Comunidade" },
+            { to: "guiaTEA", label: "Guia TEA"},
+            { to: "/TesteAutismo", label: "Quiz" },
+            { to: "/GuiaSaude", label: "Guia de Saúde" },
+            { to: "/Atendimentos", label: "Atendimentos" },
+            { to: "/Diagnostico", label: "Diagnóstico" },
+            
+          ].map((item, i) => (
+            <motion.li
+              key={item.to}
+              variants={itemAnimation}
+              custom={i}
+              initial="hidden"
+              animate="visible"
+            >
+              <Link
+                to={item.to}
+                className="text-blue-900 hover:text-purple-700"
+                onClick={() => {
+                  trackClick(item.label);
+                  setMenuOpen(false);
+                }}
+              >
+                {item.label}
+              </Link>
+            </motion.li>
+          ))}
+
           {userName ? (
-            <li className="flex flex-col gap-2">
+            <motion.li
+              variants={itemAnimation}
+              custom={10}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-col gap-2"
+            >
               <span className="text-blue-900 font-semibold">Olá, {userName}!</span>
               <button
-                onClick={handleLogout}
+                onClick={() => {
+                  handleLogout();
+                  trackClick("Logout");
+                }}
                 className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
               >
                 Sair
               </button>
-            </li>
+            </motion.li>
           ) : (
-            <li>
+            <motion.li
+              variants={itemAnimation}
+              custom={11}
+              initial="hidden"
+              animate="visible"
+            >
               <Link
                 to="/Login"
                 className="text-blue-900 hover:text-purple-700"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  trackClick("Login");
+                  setMenuOpen(false);
+                }}
               >
                 Entrar
               </Link>
-            </li>
+            </motion.li>
           )}
         </ul>
-      </div>
+      </motion.div>
 
-      {/* Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-trasparent z-30"
+          className="fixed inset-0 bg-transparent z-30"
           onClick={() => setMenuOpen(false)}
-        ></div>
+        />
       )}
     </>
   );

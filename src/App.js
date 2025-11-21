@@ -24,6 +24,9 @@ import FAQ from './Componentes/FAQ';
 import Atendimentos from './Componentes/Atendimentos';
 import Diagnostico from "./Componentes/Diagnostico";
 import Ads from './Componentes/Ads';
+import GuiaTEA from './Componentes/GuiaTEA';
+import GuiaCategoria from './Componentes/GuiaCategoria';
+import GuiaArtigo from './Componentes/GuiaArtigo';
 
 function App() {
   return (
@@ -77,6 +80,11 @@ function App() {
               <Route path="/DireitosAutorais" element={<DireitosAutorais />} />
               <Route path="/Suporte" element={<Suporte />} />
               <Route path="/FAQ" element={<FAQ />} />
+
+              <Route path="/guiaTEA" element={<GuiaTEA />} />
+              <Route path="/guia/:categoriaId" element={<GuiaCategoria />} />
+              <Route path="/guia/artigo/:artigoId" element={<GuiaArtigo />} />
+
             </Routes>
 
           </div>

@@ -22,7 +22,7 @@ export default function Footer() {
 
       {/* Linha final */}
       <div className="text-center text-xs text-blue-800 mt-6 border-t border-blue-300 pt-3">
-        © {new Date().getFullYear()} Portal TEA. Todos os direitos reservados.
+        © {new Date().getFullYear()} Portal TEA - Todos os direitos reservados.
       </div>
     </footer>
   );

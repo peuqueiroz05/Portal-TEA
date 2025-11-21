@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+// pra futura atualização: import TextoSimplificado from "../Componentes/TextoSimplificado"
+import TTSPlayer from "../Acessibilidade/TTSPlayer";
 
 export default function Diagnostico() {
   const keywords = [
@@ -13,6 +15,48 @@ export default function Diagnostico() {
     "saúde mental autismo",
     "burnout autista"
   ];
+
+  //o texto da acessibilidade
+  const textoCompleto = `Diagnóstico do Transtorno do Espectro Autista (TEA)
+Uma análise profunda: diagnóstico na infância, consequências do diagnóstico tardio, camuflagem social e recomendações baseadas nas mais recentes evidências científicas.
+
+O diagnóstico do Transtorno do Espectro Autista (TEA) constitui um ponto de virada na vida de muitas pessoas. É um processo clínico que envolve múltiplas etapas: análise de histórico do desenvolvimento, entrevistas com familiares, observações comportamentais e o uso de instrumentos padronizados como ADI‑R (Autism Diagnostic Interview – Revised) e ADOS‑2 (Autism Diagnostic Observation Schedule, 2ª Edição). Tais instrumentos são amplamente reconhecidos por guias clínicos, pois permitem avaliar domínios centrais do TEA — interação social, comunicação, comportamentos restritos e padronizados — à luz dos critérios do DSM‑5 e da CID‑11. Pesquisas recentes apontam que quanto mais cedo ocorre a identificação, maior é o potencial para intervenções eficazes, especialmente na criança pequena, o que pode gerar melhorias em comunicação, autonomia e bem-estar familiar ao longo do tempo.
+
+1. Diagnóstico na infância: a importância da detecção precoce
+A infância é um período crítico para o desenvolvimento do cérebro, e muitas janelas de plasticidade ainda estão abertas. Identificar o TEA entre os 18 e 36 meses, por exemplo, permite o acesso a intervenções comportamentais intensivas, terapias de linguagem e programas educacionais especializados. Estudos longitudinais demonstram que intervenções precoces, baseadas em evidência, estão associadas a ganhos significativos em linguagem, comportamento social e habilidades adaptativas. Além disso, a avaliação precoce favorece o suporte familiar e a preparação de pais e cuidadores para estruturar rotinas mais coerentes e previsíveis.
+
+Entre os instrumentos mais usados por clínicos, a ADI‑R, que consiste em uma entrevista detalhada com os cuidadores sobre o desenvolvimento da criança, e a ADOS‑2, que registra a interação social e comunicativa em situações estruturadas, são considerados “padrão-ouro”. A pesquisa com grandes amostras sugere que a combinação desses instrumentos aumenta a precisão diagnóstica, mesmo em crianças com diferentes níveis de linguagem ou funcionamento cognitivo. (Kim & Lord, 2015 – J Autism Dev Disord)
+
+2. Consequências do diagnóstico tardio
+Muitas pessoas apenas recebem diagnóstico de TEA na adolescência ou na vida adulta. Isso pode ocorrer por vários motivos: manifestações mais sutis, ausência de identificação, ou o uso intensivo de estratégias de camuflagem social (masking). O atraso no diagnóstico pode ter implicações profundas para a saúde mental: estudos mostram que adultos autistas diagnosticados tardiamente têm maior prevalência de ansiedade, depressão, vergonha, solidão e risco maior de burnout. A falta de suporte adaptado, combinada com expectativas sociais mal compreendidas, pode resultar em sofrimento prolongado e dificuldades funcionais.
+
+A trajetória de vida dessas pessoas costuma envolver anos de autoconhecimento difícil. Após receber o diagnóstico, muitos relatam alívio, validação de suas diferenças e reconstrução de suas próprias narrativas existenciais. Mas também há desafios: a percepção dos outros pode mudar — positivamente quando há empatia, ou negativamente se existir estigma mal interpretado. Reconhecer o diagnóstico tarde permite, no entanto, planejar intervenções mais realistas e ajustes essenciais para qualidade de vida.
+
+3. Camuflagem (masking) e seu impacto psicológico
+A camuflagem social é um fenômeno em que pessoas autistas adotam estratégias para se esconder ou compensar suas diferenças neurológicas em contextos sociais: imitar gestos, suprimir estereotipias, internalizar scripts sociais. Embora isso possa facilitar a aceitação social, há um custo psicológico elevado. Pesquisas demonstram que camuflagem está associada a altos níveis de ansiedade, estresse percebido e regulação emocional prejudicada.
+
+Um estudo com 787 adultos autistas revelou que estresse percebido e dificuldades de regulação emocional mediam a relação entre camuflagem e sintomas de depressão e ansiedade. (Hull et al., 2023) Outro estudo com adolescentes autistas mostrou que comportamentos de camuflagem autodeterminados estão correlacionados com discrepâncias entre relatórios de ansiedade/depressão feitos por eles mesmos e por seus cuidadores. (Lei, Leigh, Charman et al., 2024)
+
+Implicações clínicas da camuflagem
+Profissionais devem considerar relatórios subjetivos de exaustão social e estresse como indicadores relevantes.
+Avaliações diagnósticas devem incluir perguntas sobre estratégias de camuflagem, especialmente em populações subdiagnosticadas.
+Intervenções de suporte emocional podem focar em regulação emocional, autocompaixão e redução de estigma interno. (Camouflaging e autocompaixão — Petrides et al., 2023)
+4. Como o diagnóstico molda a forma que os outros nos veem
+O diagnóstico pode transformar interpretações: comportamentos previamente vistos como “teimosia”, “timidez” ou “desatenção” passam a ser compreendidos sob a ótica neurológica. Isso permite não só reduzir estigmas, como também favorecer ajustes sensoriais, pedagógicos e psicológicos. No ambiente escolar e de trabalho, estratégias como rotinas previsíveis, pausas sensoriais e adaptações comunicativas se tornam viáveis com base no diagnóstico.
+
+No entanto, o diagnóstico também exige comunicação cuidadosa. Profissionais têm papel central para explicar o laudo de forma empática, enfatizando funcionamentos e necessidades em vez de rótulos, para evitar estigmas negativos ou mal-entendidos sobre o TEA.
+
+5. Recomendações práticas para famílias, educadores e profissionais
+Avaliação multidisciplinar especializada: buscar psicólogos com experiência em ADI‑R/ADOS, neuropediatras ou psiquiatras do desenvolvimento.
+Planejar adaptações sensoriais: ajustar ambientes físicos (luzes, ruídos, mobiliário) para reduzir sobrecarga.
+Investir em regulação emocional: programas de autocuidado, autocompaixão, e estratégias para lidar com estresse crônico.
+Educar a comunidade: capacitar professores e colegas sobre neurodiversidade para reduzir estigmas e promover inclusão.
+Apoio contínuo para adultos diagnosticados tardiamente: monitorar saúde mental, senso de identidade e burnout.
+6. Interpretação crítica de evidências
+Embora haja um consenso crescente sobre os riscos associados à camuflagem e ao diagnóstico tardio, nem todas as estratégias de intervenção são igualmente validadas. Pesquisas de meta-análise, guias clínicos e estudos longitudinais devem orientar as escolhas terapêuticas, ao invés de promessas de cura. O foco deve estar na funcionalidade, qualidade de vida e empoderamento, não apenas na etiqueta diagnóstica.
+
+Palavras-chave
+diagnóstico autismo, diagnóstico tardio, intervenção precoce, camuflagem autista, ADI‑R, ADOS‑2, regulação emocional, saúde mental autismo, burnout autista`
 
   return (
     <motion.main
@@ -31,6 +75,11 @@ export default function Diagnostico() {
             camuflagem social e recomendações baseadas nas mais recentes evidências científicas.
           </p>
         </header>
+
+        {/*player de audio*/}
+        <div className="mb-6">
+          <TTSPlayer text={textoCompleto} />
+        </div>
 
         <article className="bg-white p-8 rounded-2xl shadow">
           {/* Introdução Densa */}
