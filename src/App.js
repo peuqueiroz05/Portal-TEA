@@ -23,7 +23,7 @@ import Suporte from './Componentes/Suporte';
 import FAQ from './Componentes/FAQ';
 import Atendimentos from './Componentes/Atendimentos';
 import Diagnostico from "./Componentes/Diagnostico";
-import Ads from './Componentes/Ads';
+//import Ads from './Componentes/Ads'; deixar ativado caso queira o ads fixo
 import GuiaTEA from './Componentes/GuiaTEA';
 import GuiaCategoria from './Componentes/GuiaCategoria';
 import GuiaArtigo from './Componentes/GuiaArtigo';
@@ -58,7 +58,7 @@ function App() {
                     </Helmet>
 
                     <Carrosel />
-                    <Ads />
+                    {/*<Ads /> adicionar se quiser o adsense fixo*/}
                   </>
                 }
               />
