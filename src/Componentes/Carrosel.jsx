@@ -183,8 +183,8 @@ const Carrosel = () => {
           </a>
 
           {/* Card 4 */}
-          <a href="/ContatoProfissional" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
-            <h3 className="text-xl font-bold mb-2 text-blue-600">Profissionais</h3>
+          <a href="/atendimentos" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
+            <h3 className="text-xl font-bold mb-2 text-blue-600">Atendimentos</h3>
             <p className="text-gray-600">Encontre terapeutas e especialistas.</p>
           </a>
 
