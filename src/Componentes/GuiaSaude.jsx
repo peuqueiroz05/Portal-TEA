@@ -36,7 +36,7 @@ const Saude = () => {
   return (
     <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">
-        Guia de saúde, atendimento médico e direitos para pessoas com TEA
+        Manual de saúde, atendimento médico e direitos para pessoas com TEA
       </h1>
       <p className="mb-10 text-gray-700 text-lg text-center">
         Recomendações baseadas em fontes confiáveis para tornar consultas e procedimentos médicos mais acessíveis e confortáveis para pessoas com Transtorno do Espectro Autista.

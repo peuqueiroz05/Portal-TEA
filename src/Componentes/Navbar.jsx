@@ -91,7 +91,7 @@ export default function Navbar() {
             { to: "/Comunidade", label: "Comunidade" },
             { to: "guiaTEA", label: "Guia TEA"},
             { to: "/TesteAutismo", label: "Quiz" },
-            { to: "/GuiaSaude", label: "Guia de Saúde" },
+            { to: "/GuiaSaude", label: "Manual de Saúde" },
             { to: "/Atendimentos", label: "Atendimentos" },
             { to: "/Diagnostico", label: "Diagnóstico" },
             
