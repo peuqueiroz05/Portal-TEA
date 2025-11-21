@@ -6,8 +6,8 @@ const faqData = [
         answer: "O PORTAL TEA é uma comunidade dedicada a pais e cuidadores de pessoas com autismo, oferecendo um espaço de apoio e compartilhamento de experiências."
     },
     {
-        question: "Como posso me registrar na comunidade?",
-        answer: "Para se registrar, clique na aba 'Registrar' no menu superior e preencha as informações necessárias."
+        question: "Como posso me Cadastrar na comunidade?",
+        answer: "Para se registrar, clique na aba 'Entrar' no menu superior e logo após clique em 'Cadastre-se' preencha as informações necessárias."
     },
     {
         question: "Quais são os principais recursos da plataforma?",
