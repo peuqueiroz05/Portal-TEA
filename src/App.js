@@ -27,6 +27,7 @@ import Diagnostico from "./Componentes/Diagnostico";
 import GuiaTEA from './Componentes/GuiaTEA';
 import GuiaCategoria from './Componentes/GuiaCategoria';
 import GuiaArtigo from './Componentes/GuiaArtigo';
+import QuadroTarefas from './Componentes/QuadroTarefas';
 
 function App() {
   return (
@@ -84,7 +85,7 @@ function App() {
               <Route path="/guiaTEA" element={<GuiaTEA />} />
               <Route path="/guia/:categoriaId" element={<GuiaCategoria />} />
               <Route path="/guia/artigo/:artigoId" element={<GuiaArtigo />} />
-
+              <Route path="/tarefas" element={<QuadroTarefas />} />
             </Routes>
 
           </div>

@@ -94,6 +94,7 @@ export default function Navbar() {
             { to: "/GuiaSaude", label: "Manual de Saúde" },
             { to: "/Atendimentos", label: "Atendimentos" },
             { to: "/Diagnostico", label: "Diagnóstico" },
+            { to: "/tarefas", label: "Quadro de Tarefas"},
             
           ].map((item, i) => (
             <motion.li

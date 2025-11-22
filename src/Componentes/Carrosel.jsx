@@ -13,6 +13,7 @@ import PortalTEA6 from '../Imagens/PortalTEA6.png';
 import introImg from '../Imagens/categoria-introducao.jpg';
 import artigoImg from '../Imagens/artigo2.jpg';
 import comImg from '../Imagens/categoria-comunicacao.jpg';
+import CuriosidadesTEA from './CuriosidadesTEA';
 
 const imagesCarrossel1 = [PortalTEA1, PortalTEA2, PortalTEA3];
 const imagesCarrossel2 = [PortalTEA4, PortalTEA5, PortalTEA6];
@@ -155,6 +156,8 @@ const Carrosel = () => {
         </div>
 
       </div>
+        {/*adição das curiosidades */}
+       <CuriosidadesTEA />
 
       {/* Seção de Navegação Rápida */}
       <div className="mt-20" data-aos="fade-up">
@@ -202,6 +205,67 @@ const Carrosel = () => {
 
         </div>
       </div>
+      
+
+      {/* Seção dicas rápidas */}
+<div className="max-w-6xl mx-auto mt-16 mb-10 px-4" data-aos="fade-up">
+  <h2 className="text-2xl font-bold text-gray-800 mb-6">
+    Dicas rápidas para o dia a dia
+  </h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    {/* Card 1 */}
+    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-blue-600 mb-2">Reduzindo crises</h3>
+      <p className="text-gray-600 text-sm">
+        Mantenha uma rotina previsível e use avisos visuais antes de mudanças.
+      </p>
+    </div>
+
+    {/* Card 2 */}
+    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-blue-600 mb-2">Melhorando comunicação</h3>
+      <p className="text-gray-600 text-sm">
+        Use frases curtas, dê tempo para resposta e utilize apoio visual.
+      </p>
+    </div>
+
+    {/* Card 3 */}
+    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-blue-600 mb-2">Apoio na escola</h3>
+      <p className="text-gray-600 text-sm">
+        Converse com a escola e crie um plano de adaptação simples e claro.
+      </p>
+    </div>
+
+    {/* Card 4 */}
+    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-blue-600 mb-2">Seletividade alimentar</h3>
+      <p className="text-gray-600 text-sm">
+        Introduza novos alimentos aos poucos, sempre ao lado dos favoritos.
+      </p>
+    </div>
+
+    {/* Card 5 */}
+    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-blue-600 mb-2">Sono mais tranquilo</h3>
+      <p className="text-gray-600 text-sm">
+        Crie uma rotina noturna calma, com luz baixa e pouco estímulo.
+      </p>
+    </div>
+
+    {/* Card 6 */}
+    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-blue-600 mb-2">Fala e linguagem</h3>
+      <p className="text-gray-600 text-sm">
+        Nomeie objetos, descreva ações e incentive imitar sons gradualmente.
+      </p>
+    </div>
+
+  </div>
+</div>
+
 
 {/* Artigos Recentes */}
 <div className="mt-20" data-aos="fade-up">
