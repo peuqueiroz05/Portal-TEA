@@ -28,6 +28,8 @@ import GuiaTEA from './Componentes/GuiaTEA';
 import GuiaCategoria from './Componentes/GuiaCategoria';
 import GuiaArtigo from './Componentes/GuiaArtigo';
 import QuadroTarefas from './Componentes/QuadroTarefas';
+import DiarioSensorial from './Componentes/DiarioSensorial';
+import GraficoSensorialSemanal from './Componentes/GraficoSensorialSemanal';
 
 function App() {
   return (
@@ -86,6 +88,8 @@ function App() {
               <Route path="/guia/:categoriaId" element={<GuiaCategoria />} />
               <Route path="/guia/artigo/:artigoId" element={<GuiaArtigo />} />
               <Route path="/tarefas" element={<QuadroTarefas />} />
+              <Route path="/DiarioSensorial" element={<DiarioSensorial />} />
+              <Route path="GraficoSensorialSemanal" element={<GraficoSensorialSemanal />} />
             </Routes>
 
           </div>

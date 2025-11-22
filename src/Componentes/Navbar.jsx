@@ -95,6 +95,7 @@ export default function Navbar() {
             { to: "/Atendimentos", label: "Atendimentos" },
             { to: "/Diagnostico", label: "Diagnóstico" },
             { to: "/tarefas", label: "Quadro de Tarefas"},
+            { to: "/DiarioSensorial", label: "Diario Sensorial"},
             
           ].map((item, i) => (
             <motion.li
