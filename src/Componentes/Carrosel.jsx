@@ -160,51 +160,77 @@ const Carrosel = () => {
        <CuriosidadesTEA />
 
       {/* Seção de Navegação Rápida */}
-      <div className="mt-20" data-aos="fade-up">
-        <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">
-          Explore o Portal TEA
-        </h2>
+<div className="mt-20" data-aos="fade-up">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <h2 className="text-4xl font-extrabold text-gray-800 text-center mb-12 tracking-wide">
+    Explore o Portal TEA
+  </h2>
 
-          {/* Card 1 */}
-          <a href="/guiaTEA" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
-            <h3 className="text-xl font-bold mb-2 text-blue-600">Guia TEA</h3>
-            <p className="text-gray-600">Conteúdos educativos organizados em categorias.</p>
-          </a>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-          {/* Card 2 */}
-          <a href="/Comunidade" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
-            <h3 className="text-xl font-bold mb-2 text-blue-600">Comunidade</h3>
-            <p className="text-gray-600">Compartilhe experiências e ajude outras famílias.</p>
-          </a>
+    {[
+      {
+        title: "Guia TEA",
+        desc: "Conteúdos educativos organizados em categorias.",
+        href: "/guiaTEA",
+        icon: "📘",
+      },
+      {
+        title: "Comunidade",
+        desc: "Compartilhe experiências e ajude outras famílias.",
+        href: "/Comunidade",
+        icon: "👥",
+      },
+      {
+        title: "Teste Interativo",
+        desc: "Ferramenta educativa para entender sinais.",
+        href: "/TesteAutismo",
+        icon: "🧠",
+      },
+      {
+        title: "Atendimentos",
+        desc: "Encontre terapeutas e especialistas.",
+        href: "/atendimentos",
+        icon: "💙",
+      },
+      {
+        title: "Quem Somos",
+        desc: "Conheça o propósito do Portal TEA.",
+        href: "/Sobre",
+        icon: "🏷️",
+      },
+      {
+        title: "Perguntas Frequentes",
+        desc: "Tire dúvidas comuns sobre TEA.",
+        href: "/FAQ",
+        icon: "❓",
+      },
+    ].map((item, index) => (
+      <a
+        key={index}
+        href={item.href}
+        className="
+        block p-6 rounded-2xl shadow-md bg-gradient-to-br from-white to-blue-50 
+        border border-blue-100
+        hover:shadow-2xl hover:-translate-y-2 hover:border-blue-300
+        transition-all duration-300
+        "
+      >
+        <div className="text-4xl mb-4">{item.icon}</div>
 
-          {/* Card 3 */}
-          <a href="/TesteAutismo" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
-            <h3 className="text-xl font-bold mb-2 text-blue-600">Teste Interativo</h3>
-            <p className="text-gray-600">Ferramenta educativa para entender sinais.</p>
-          </a>
+        <h3 className="text-2xl font-bold mb-2 text-blue-700">
+          {item.title}
+        </h3>
 
-          {/* Card 4 */}
-          <a href="/atendimentos" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
-            <h3 className="text-xl font-bold mb-2 text-blue-600">Atendimentos</h3>
-            <p className="text-gray-600">Encontre terapeutas e especialistas.</p>
-          </a>
+        <p className="text-gray-600 leading-relaxed">
+          {item.desc}
+        </p>
+      </a>
+    ))}
 
-          {/* Card 5 */}
-          <a href="/Sobre" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
-            <h3 className="text-xl font-bold mb-2 text-blue-600">Quem Somos</h3>
-            <p className="text-gray-600">Conheça o propósito do Portal TEA.</p>
-          </a>
+  </div>
+</div>
 
-          {/* Card 6 */}
-          <a href="/FAQ" className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition block">
-            <h3 className="text-xl font-bold mb-2 text-blue-600">Perguntas Frequentes</h3>
-            <p className="text-gray-600">Tire dúvidas comuns sobre TEA.</p>
-          </a>
-
-        </div>
-      </div>
       
 
 {/* Seção dicas rápidas */}
@@ -257,11 +283,6 @@ const Carrosel = () => {
         <h3 className="text-xl font-semibold text-blue-700 mb-1">{card.title}</h3>
         <p className="text-gray-600 text-sm leading-relaxed">{card.desc}</p>
 
-        <div className="mt-2">
-          <span className="text-blue-500 text-sm font-semibold hover:underline cursor-pointer">
-            Ver mais →
-          </span>
-        </div>
       </div>
     ))}
 
