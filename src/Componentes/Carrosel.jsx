@@ -207,64 +207,67 @@ const Carrosel = () => {
       </div>
       
 
-      {/* Seção dicas rápidas */}
-<div className="max-w-6xl mx-auto mt-16 mb-10 px-4" data-aos="fade-up">
-  <h2 className="text-2xl font-bold text-gray-800 mb-6">
-    Dicas rápidas para o dia a dia
+{/* Seção dicas rápidas */}
+<div className="max-w-6xl mx-auto mt-20 mb-10 px-4" data-aos="fade-up">
+  <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+    🌟 Dicas rápidas para o dia a dia
   </h2>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    
-    {/* Card 1 */}
-    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
-      <h3 className="text-lg font-semibold text-blue-600 mb-2">Reduzindo crises</h3>
-      <p className="text-gray-600 text-sm">
-        Mantenha uma rotina previsível e use avisos visuais antes de mudanças.
-      </p>
-    </div>
 
-    {/* Card 2 */}
-    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
-      <h3 className="text-lg font-semibold text-blue-600 mb-2">Melhorando comunicação</h3>
-      <p className="text-gray-600 text-sm">
-        Use frases curtas, dê tempo para resposta e utilize apoio visual.
-      </p>
-    </div>
+    {/* Card Template */}
+    {[
+      {
+        title: "Reduzindo crises",
+        desc: "Mantenha uma rotina previsível e use avisos visuais antes de mudanças.",
+        icon: "🧩",
+      },
+      {
+        title: "Melhorando comunicação",
+        desc: "Use frases curtas, dê tempo para resposta e utilize apoio visual.",
+        icon: "💬",
+      },
+      {
+        title: "Apoio na escola",
+        desc: "Converse com a escola e crie um plano de adaptação simples e claro.",
+        icon: "🏫",
+      },
+      {
+        title: "Seletividade alimentar",
+        desc: "Introduza novos alimentos aos poucos, sempre ao lado dos favoritos.",
+        icon: "🍎",
+      },
+      {
+        title: "Sono mais tranquilo",
+        desc: "Crie uma rotina noturna calma, com luz baixa e pouco estímulo.",
+        icon: "🌙",
+      },
+      {
+        title: "Fala e linguagem",
+        desc: "Nomeie objetos, descreva ações e incentive imitar sons gradualmente.",
+        icon: "🗣️",
+      },
+    ].map((card, index) => (
+      <div
+        key={index}
+        className="p-6 rounded-xl bg-gradient-to-br from-white to-blue-50 shadow-lg border 
+        hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+      >
+        <div className="text-4xl mb-3">{card.icon}</div>
+        <h3 className="text-xl font-semibold text-blue-700 mb-1">{card.title}</h3>
+        <p className="text-gray-600 text-sm leading-relaxed">{card.desc}</p>
 
-    {/* Card 3 */}
-    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
-      <h3 className="text-lg font-semibold text-blue-600 mb-2">Apoio na escola</h3>
-      <p className="text-gray-600 text-sm">
-        Converse com a escola e crie um plano de adaptação simples e claro.
-      </p>
-    </div>
-
-    {/* Card 4 */}
-    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
-      <h3 className="text-lg font-semibold text-blue-600 mb-2">Seletividade alimentar</h3>
-      <p className="text-gray-600 text-sm">
-        Introduza novos alimentos aos poucos, sempre ao lado dos favoritos.
-      </p>
-    </div>
-
-    {/* Card 5 */}
-    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
-      <h3 className="text-lg font-semibold text-blue-600 mb-2">Sono mais tranquilo</h3>
-      <p className="text-gray-600 text-sm">
-        Crie uma rotina noturna calma, com luz baixa e pouco estímulo.
-      </p>
-    </div>
-
-    {/* Card 6 */}
-    <div className="p-5 bg-white shadow-md rounded-xl border hover:shadow-lg transition">
-      <h3 className="text-lg font-semibold text-blue-600 mb-2">Fala e linguagem</h3>
-      <p className="text-gray-600 text-sm">
-        Nomeie objetos, descreva ações e incentive imitar sons gradualmente.
-      </p>
-    </div>
+        <div className="mt-2">
+          <span className="text-blue-500 text-sm font-semibold hover:underline cursor-pointer">
+            Ver mais →
+          </span>
+        </div>
+      </div>
+    ))}
 
   </div>
 </div>
+
 
 
 {/* Artigos Recentes */}
